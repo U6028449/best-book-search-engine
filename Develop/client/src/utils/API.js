@@ -1,10 +1,22 @@
 // route to get logged in user's info (needs the token)
+//rest
+// export const getMe = (token) => {
+//   return fetch('/api/users/me', {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       authorization: `Bearer ${token}`,
+//     },
+//   });
+// };
+
 export const getMe = (token) => {
-  return fetch('/api/users/me', {
+  return fetch('/graphql', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({ query: `{ me }` }),
   });
 };
 
